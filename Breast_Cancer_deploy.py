@@ -144,6 +144,3 @@ if st.button('**Breast Cancer Detection Result**'):
         
         # Trigger balloon animation
         st.balloons()
-        
-    except ValueError:
-        st.error("Please enter valid numerical inputs in all fields.")
