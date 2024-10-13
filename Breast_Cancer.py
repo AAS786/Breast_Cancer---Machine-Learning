@@ -3,7 +3,6 @@ import pickle as pk
 import numpy as np
 import warnings
 warnings.filterwarnings("ignore")
-import os
 
 # Loading the saved model
 model = pk.load(open('Breast_Cancer.sav', 'rb'))
@@ -72,10 +71,10 @@ st.markdown(f"""
     </style>
     """, unsafe_allow_html=True)
 
-# Credit Card Fraud Detection Page
+# Title of the application
 st.markdown("<h1>Breast Cancer Detection using <br>Machine Learning</h1>", unsafe_allow_html=True)
 
-# Layout for input boxes
+# Input layout with columns for data entry
 col1, col2, col3, col4 = st.columns(4)
 with col1:
     radius_mean = st.text_input('**Radius Mean**', placeholder='Enter Radius Mean')
@@ -114,32 +113,36 @@ with col4:
 
 # Prediction Button
 if st.button('**Breast Cancer Detection Result**'):
-    # Collecting input data into a list
-    input_data = [
-        float(radius_mean), float(texture_mean), float(perimeter_mean), float(area_mean), 
-        float(smoothness_mean), float(compactness_mean), float(concavity_mean), float(concave_points_mean),
-        float(symmetry_mean), float(fractal_dimension_mean), float(radius_se), float(texture_se),
-        float(perimeter_se), float(area_se), float(smoothness_se), float(compactness_se), 
-        float(concavity_se), float(concave_points_se), float(symmetry_se), float(fractal_dimension_se), 
-        float(radius_worst), float(texture_worst), float(perimeter_worst), float(area_worst), 
-        float(smoothness_worst), float(compactness_worst), float(concavity_worst), float(concave_points_worst), 
-        float(symmetry_worst), float(fractal_dimension_worst)
-    ]
+    try:
+        # Collecting input data into a list
+        input_data = [
+            float(radius_mean), float(texture_mean), float(perimeter_mean), float(area_mean), 
+            float(smoothness_mean), float(compactness_mean), float(concavity_mean), float(concave_points_mean),
+            float(symmetry_mean), float(fractal_dimension_mean), float(radius_se), float(texture_se),
+            float(perimeter_se), float(area_se), float(smoothness_se), float(compactness_se), 
+            float(concavity_se), float(concave_points_se), float(symmetry_se), float(fractal_dimension_se), 
+            float(radius_worst), float(texture_worst), float(perimeter_worst), float(area_worst), 
+            float(smoothness_worst), float(compactness_worst), float(concavity_worst), float(concave_points_worst), 
+            float(symmetry_worst), float(fractal_dimension_worst)
+        ]
 
-    # Reshaping input data for model prediction
-    reshaped_input = np.array(input_data).reshape(1, -1)
-    gen_prediction = model.predict(reshaped_input)
+        # Reshaping input data for model prediction
+        reshaped_input = np.array(input_data).reshape(1, -1)
+        gen_prediction = model.predict(reshaped_input)
 
-    # Prediction result
-    if gen_prediction[0] == 0:
-        Predict_diagnosis = 'The person has a High level of Cancer Symptoms'
-        result_color = "red"
-    else:
-        Predict_diagnosis = 'The person has a Very Low level of Cancer Symptoms'
-        result_color = "green"
+        # Prediction result
+        if gen_prediction[0] == 0:
+            Predict_diagnosis = 'The person has a High level of Cancer Symptoms'
+            result_color = "red"
+        else:
+            Predict_diagnosis = 'The person has a Very Low level of Cancer Symptoms'
+            result_color = "green"
 
-    # Display prediction result
-    st.markdown(f"<h3 style='color: {result_color};'>{Predict_diagnosis}</h3>", unsafe_allow_html=True)
-    
-    # Trigger balloon animation
-    st.balloons()
+        # Display prediction result
+        st.markdown(f"<h3 style='color: {result_color};'>{Predict_diagnosis}</h3>", unsafe_allow_html=True)
+        
+        # Trigger balloon animation
+        st.balloons()
+        
+    except ValueError:
+        st.error("Please enter valid numerical inputs in all fields.")
