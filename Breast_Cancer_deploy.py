@@ -1,13 +1,12 @@
 import streamlit as st
 import numpy as np
-import pickle
+import os
+import pickle as pk
 import warnings
-
-# Ignore warnings
 warnings.filterwarnings("ignore")
 
 # Load the saved model once at the start
-loaded_model = pickle.load(open('Breast_deploy.sav', 'rb'))
+loaded_model = pk.load(open('Breast_deploy.sav','rb'))
 
 # Custom CSS for background image and input styling
 def set_custom_css():
@@ -93,7 +92,7 @@ def main():
         radius_mean = st.text_input('**Radius Mean**', placeholder='Enter Radius Mean')
         smoothness_mean = st.text_input('**Smoothness Mean**', placeholder='Enter Smoothness Mean')
         symmetry_mean = st.text_input('**Symmetry Mean**', placeholder='Enter Symmetry Mean')
-        perimeter_se = st.text_input('**Perimeter SE**', placeholder='Enter Perimeter SE')
+        perimeter_se = st.text_input('**Perimeter Se**', placeholder='Enter Perimeter Se')
         concavity_se = st.text_input('**Concavity SE**', placeholder='Enter Concavity SE')
         radius_worst = st.text_input('**Radius Worst**', placeholder='Enter Radius Worst')
         smoothness_worst = st.text_input('**Smoothness Worst**', placeholder='Enter Smoothness Worst')
@@ -101,26 +100,26 @@ def main():
         texture_mean = st.text_input('**Texture Mean**', placeholder='Enter Texture Mean')
         compactness_mean = st.text_input('**Compactness Mean**', placeholder='Enter Compactness Mean')
         fractal_dimension_mean = st.text_input('**Fractal Dimension Mean**', placeholder='Enter Fractal Dimension Mean')
-        area_se = st.text_input('**Area SE**', placeholder='Enter Area SE')
-        concave_points_se = st.text_input('**Concave Points SE**', placeholder='Enter Concave Points SE')
+        area_se = st.text_input('**Area Se**', placeholder='Enter Area Se')
+        concave_points_se = st.text_input('**Concave Points Se**', placeholder='Enter Concave Points Se')
         texture_worst = st.text_input('**Texture Worst**', placeholder='Enter Texture Worst')
         compactness_worst = st.text_input('**Compactness Worst**', placeholder='Enter Compactness Worst')
         symmetry_worst = st.text_input('**Symmetry Worst**', placeholder='Enter Symmetry Worst')
     with col3:
         perimeter_mean = st.text_input('**Perimeter Mean**', placeholder='Enter Perimeter Mean')
-        concavity_mean = st.text_input('**Concavity Mean**', placeholder='Enter Concavity Mean')
+        concavity_mean = st.text_input('**Concavity Mean**', placeholder='Enter Concavity  Mean')
         radius_se = st.text_input('**Radius SE**', placeholder='Enter Radius SE')
-        smoothness_se = st.text_input('**Smoothness SE**', placeholder='Enter Smoothness SE')
-        symmetry_se = st.text_input('**Symmetry SE**', placeholder='Enter Symmetry SE')
+        smoothness_se = st.text_input('**Smoothness Se**', placeholder='Enter Smoothness Se')
+        symmetry_se = st.text_input('**Symmetry Se**', placeholder='Enter Symmetry Se')
         perimeter_worst = st.text_input('**Perimeter Worst**', placeholder='Enter Perimeter Worst')
         concavity_worst = st.text_input('**Concavity Worst**', placeholder='Enter Concavity Worst')
         fractal_dimension_worst = st.text_input('**Fractal Dimension Worst**', placeholder='Enter Fractal Dimension Worst')
     with col4:
         area_mean = st.text_input('**Area Mean**', placeholder='Enter Area Mean')
         concave_points_mean = st.text_input('**Concave Points Mean**', placeholder='Enter Concave Points Mean')
-        texture_se = st.text_input('**Texture SE**', placeholder='Enter Texture SE')
-        compactness_se = st.text_input('**Compactness SE**', placeholder='Enter Compactness SE')
-        fractal_dimension_se = st.text_input('**Fractal Dimension SE**', placeholder='Enter Fractal Dimension SE')
+        texture_se = st.text_input('**Texture Se**', placeholder='Enter Texture Se')
+        compactness_se = st.text_input('**Compactness Se**', placeholder='Enter Compactness Se')
+        fractal_dimension_se = st.text_input('**Fractal Dimension Se**', placeholder='Enter Fractal Dimension Se')
         area_worst = st.text_input('**Area Worst**', placeholder='Enter Area Worst')
         concave_points_worst = st.text_input('**Concave Points Worst**', placeholder='Enter Concave Points Worst')
 
