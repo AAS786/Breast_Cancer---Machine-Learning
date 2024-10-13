@@ -1,13 +1,13 @@
 import streamlit as st
 import numpy as np
-import pickle as pk
+import pickle
 import warnings
 
 # Ignore warnings
 warnings.filterwarnings("ignore")
 
 # Load the saved model once at the start
-loaded_model = pk.load(open('Breast_deploy.sav', 'rb'))
+loaded_model = pickle.load(open('Breast_deploy.sav', 'rb'))
 
 # Custom CSS for background image and input styling
 def set_custom_css():
