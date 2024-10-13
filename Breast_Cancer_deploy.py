@@ -6,7 +6,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Loading the saved model
-model = pk.load(open('Breast_deploy.sav', 'rb'))
+loaded_model = pk.load(open('Breast_deploy.sav', 'rb'))
 
 # Custom CSS with Background Image and Enhanced Input Box Design
 st.markdown(f"""
