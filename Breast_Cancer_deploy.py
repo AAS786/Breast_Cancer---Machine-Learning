@@ -6,7 +6,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Load the saved model once at the start
-loaded_model = pk.load(open('Breast_deploy.sav','rb'))
+loaded_model = pk.load(open('breast.sav','rb'))
 
 # Custom CSS for background image and input styling
 def set_custom_css():
